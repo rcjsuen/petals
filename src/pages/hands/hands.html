@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Hands
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-divider sticky>
+      <ion-label>
+        My Hand
+      </ion-label>
+    </ion-item-divider>
+    <ion-item-group reorder="true" (ionItemReorder)="reorderHand($event)">
+      <ion-item-sliding #item *ngFor="let card of game.getHand().getCards()">
+        <ion-item>
+          {{card.label}}
+        </ion-item>
+        <ion-item-options side="left">
+          <button ion-button color="danger" (click)="performHandAction(false, card)">
+            <ion-icon name="trash"></ion-icon>
+            Discard
+          </button>
+        </ion-item-options>
+
+        <ion-item-options side="right">
+          <button ion-button (click)="performHandAction(true, card)">
+            Play
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-item-group>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6>
+          <button ion-button block (click)="presentHintColorActionSheet()">Set Color</button>
+        </ion-col>
+        <ion-col col-6>
+          <button ion-button block (click)="presentHintNumberActionSheet()">Set Number</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <div *ngFor="let player of players">
+      <ion-item-divider sticky>
+        <ion-label>
+          {{player.name}}
+        </ion-label>
+      </ion-item-divider>
+
+      <ion-item-group reorder="true" (ionItemReorder)="reorderPlayerHand(player, $event)">
+        <ion-item-sliding #item *ngFor="let card of player.cards">
+          <ion-item>
+            {{card}}
+          </ion-item>
+          <ion-item-options side="left">
+            <button ion-button color="danger" (click)="presentDrawColorActionSheet(false, player, card)">
+              <ion-icon name="trash"></ion-icon>
+              Discard
+            </button>
+          </ion-item-options>
+
+          <ion-item-options side="right">
+            <button ion-button (click)="presentDrawColorActionSheet(true, player, card)">Play</button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-item-group>
+    </div>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Hint
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let card of cards">
+      <ion-label>{{card.label}}</ion-label>
+      <ion-checkbox [(ngModel)]="card.checked"></ion-checkbox>
+    </ion-item>
+    <button ion-button block (click)="hint()">Hint</button>
+  </ion-list>
+</ion-content>

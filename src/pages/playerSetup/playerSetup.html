@@ -1,0 +1,173 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Setup
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list *ngFor="let player of players">
+    <ion-item>
+      <ion-input type="text" placeholder="Player {{player.number}}" [(ngModel)]="player.name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Card</ion-label>
+      <ion-select [(ngModel)]="player.card1">
+        <ion-option value="B1">Blue 1</ion-option>
+        <ion-option value="B2">Blue 2</ion-option>
+        <ion-option value="B3">Blue 3</ion-option>
+        <ion-option value="B4">Blue 4</ion-option>
+        <ion-option value="B5">Blue 5</ion-option>
+        <ion-option value="G1">Green 1</ion-option>
+        <ion-option value="G2">Green 2</ion-option>
+        <ion-option value="G3">Green 3</ion-option>
+        <ion-option value="G4">Green 4</ion-option>
+        <ion-option value="G5">Green 5</ion-option>
+        <ion-option value="R1">Red 1</ion-option>
+        <ion-option value="R2">Red 2</ion-option>
+        <ion-option value="R3">Red 3</ion-option>
+        <ion-option value="R4">Red 4</ion-option>
+        <ion-option value="R5">Red 5</ion-option>
+        <ion-option value="W1">White 1</ion-option>
+        <ion-option value="W2">White 2</ion-option>
+        <ion-option value="W3">White 3</ion-option>
+        <ion-option value="W4">White 4</ion-option>
+        <ion-option value="W5">White 5</ion-option>
+        <ion-option value="Y1">Yellow 1</ion-option>
+        <ion-option value="Y2">Yellow 2</ion-option>
+        <ion-option value="Y3">Yellow 3</ion-option>
+        <ion-option value="Y4">Yellow 4</ion-option>
+        <ion-option value="Y5">Yellow 5</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Card</ion-label>
+      <ion-select [(ngModel)]="player.card2">
+        <ion-option value="B1">Blue 1</ion-option>
+        <ion-option value="B2">Blue 2</ion-option>
+        <ion-option value="B3">Blue 3</ion-option>
+        <ion-option value="B4">Blue 4</ion-option>
+        <ion-option value="B5">Blue 5</ion-option>
+        <ion-option value="G1">Green 1</ion-option>
+        <ion-option value="G2">Green 2</ion-option>
+        <ion-option value="G3">Green 3</ion-option>
+        <ion-option value="G4">Green 4</ion-option>
+        <ion-option value="G5">Green 5</ion-option>
+        <ion-option value="R1">Red 1</ion-option>
+        <ion-option value="R2">Red 2</ion-option>
+        <ion-option value="R3">Red 3</ion-option>
+        <ion-option value="R4">Red 4</ion-option>
+        <ion-option value="R5">Red 5</ion-option>
+        <ion-option value="W1">White 1</ion-option>
+        <ion-option value="W2">White 2</ion-option>
+        <ion-option value="W3">White 3</ion-option>
+        <ion-option value="W4">White 4</ion-option>
+        <ion-option value="W5">White 5</ion-option>
+        <ion-option value="Y1">Yellow 1</ion-option>
+        <ion-option value="Y2">Yellow 2</ion-option>
+        <ion-option value="Y3">Yellow 3</ion-option>
+        <ion-option value="Y4">Yellow 4</ion-option>
+        <ion-option value="Y5">Yellow 5</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Card</ion-label>
+      <ion-select [(ngModel)]="player.card3">
+        <ion-option value="B1">Blue 1</ion-option>
+        <ion-option value="B2">Blue 2</ion-option>
+        <ion-option value="B3">Blue 3</ion-option>
+        <ion-option value="B4">Blue 4</ion-option>
+        <ion-option value="B5">Blue 5</ion-option>
+        <ion-option value="G1">Green 1</ion-option>
+        <ion-option value="G2">Green 2</ion-option>
+        <ion-option value="G3">Green 3</ion-option>
+        <ion-option value="G4">Green 4</ion-option>
+        <ion-option value="G5">Green 5</ion-option>
+        <ion-option value="R1">Red 1</ion-option>
+        <ion-option value="R2">Red 2</ion-option>
+        <ion-option value="R3">Red 3</ion-option>
+        <ion-option value="R4">Red 4</ion-option>
+        <ion-option value="R5">Red 5</ion-option>
+        <ion-option value="W1">White 1</ion-option>
+        <ion-option value="W2">White 2</ion-option>
+        <ion-option value="W3">White 3</ion-option>
+        <ion-option value="W4">White 4</ion-option>
+        <ion-option value="W5">White 5</ion-option>
+        <ion-option value="Y1">Yellow 1</ion-option>
+        <ion-option value="Y2">Yellow 2</ion-option>
+        <ion-option value="Y3">Yellow 3</ion-option>
+        <ion-option value="Y4">Yellow 4</ion-option>
+        <ion-option value="Y5">Yellow 5</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Card</ion-label>
+      <ion-select [(ngModel)]="player.card4">
+        <ion-option value="B1">Blue 1</ion-option>
+        <ion-option value="B2">Blue 2</ion-option>
+        <ion-option value="B3">Blue 3</ion-option>
+        <ion-option value="B4">Blue 4</ion-option>
+        <ion-option value="B5">Blue 5</ion-option>
+        <ion-option value="G1">Green 1</ion-option>
+        <ion-option value="G2">Green 2</ion-option>
+        <ion-option value="G3">Green 3</ion-option>
+        <ion-option value="G4">Green 4</ion-option>
+        <ion-option value="G5">Green 5</ion-option>
+        <ion-option value="R1">Red 1</ion-option>
+        <ion-option value="R2">Red 2</ion-option>
+        <ion-option value="R3">Red 3</ion-option>
+        <ion-option value="R4">Red 4</ion-option>
+        <ion-option value="R5">Red 5</ion-option>
+        <ion-option value="W1">White 1</ion-option>
+        <ion-option value="W2">White 2</ion-option>
+        <ion-option value="W3">White 3</ion-option>
+        <ion-option value="W4">White 4</ion-option>
+        <ion-option value="W5">White 5</ion-option>
+        <ion-option value="Y1">Yellow 1</ion-option>
+        <ion-option value="Y2">Yellow 2</ion-option>
+        <ion-option value="Y3">Yellow 3</ion-option>
+        <ion-option value="Y4">Yellow 4</ion-option>
+        <ion-option value="Y5">Yellow 5</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- players don't include self, so less than 3 and not 4 -->
+    <ion-item *ngIf="players.length < 3">
+      <ion-label>Card</ion-label>
+      <ion-select [(ngModel)]="player.card5">
+        <ion-option value="B1">Blue 1</ion-option>
+        <ion-option value="B2">Blue 2</ion-option>
+        <ion-option value="B3">Blue 3</ion-option>
+        <ion-option value="B4">Blue 4</ion-option>
+        <ion-option value="B5">Blue 5</ion-option>
+        <ion-option value="G1">Green 1</ion-option>
+        <ion-option value="G2">Green 2</ion-option>
+        <ion-option value="G3">Green 3</ion-option>
+        <ion-option value="G4">Green 4</ion-option>
+        <ion-option value="G5">Green 5</ion-option>
+        <ion-option value="R1">Red 1</ion-option>
+        <ion-option value="R2">Red 2</ion-option>
+        <ion-option value="R3">Red 3</ion-option>
+        <ion-option value="R4">Red 4</ion-option>
+        <ion-option value="R5">Red 5</ion-option>
+        <ion-option value="W1">White 1</ion-option>
+        <ion-option value="W2">White 2</ion-option>
+        <ion-option value="W3">White 3</ion-option>
+        <ion-option value="W4">White 4</ion-option>
+        <ion-option value="W5">White 5</ion-option>
+        <ion-option value="Y1">Yellow 1</ion-option>
+        <ion-option value="Y2">Yellow 2</ion-option>
+        <ion-option value="Y3">Yellow 3</ion-option>
+        <ion-option value="Y4">Yellow 4</ion-option>
+        <ion-option value="Y5">Yellow 5</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <button ion-button block (click)="finish()">Finish</button>
+</ion-content>
