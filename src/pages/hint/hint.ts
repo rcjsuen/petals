@@ -77,6 +77,7 @@ export class HintPage {
             } else if (this.five) {
                 hand[i].setFive(this.cards[i].checked);
             }
+            hand[i].update();
         }
         this.navCtrl.pop();
     }

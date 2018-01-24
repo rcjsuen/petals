@@ -6,10 +6,11 @@
 
 import { Game, Color } from "./game";
 import { UnknownCard } from "./unknownCard";
+import { Card } from "./card";
 
 export class Hand {
 
-    private cards: UnknownCard[] = [];
+    private cards: Card[] = [];
 
     constructor(private game: Game) {
         const deck = game.getDeck();
@@ -28,29 +29,52 @@ export class Hand {
         this.cards.splice(to, 0, card);
     }
 
-    private remove(card: UnknownCard) {
+    private remove(card: Card): number {
         let index = this.cards.indexOf(card);
         this.cards.splice(index, 1);
-        this.cards.push(new UnknownCard(this.game.getDeck()));
+        return index;
     }
 
-    public play(card: UnknownCard, color: Color, value: number): void {
-        this.game.play(this.game.getDeck().drawCard(color, value));
+    private replace(card: Card, replacement: Card) {
         this.remove(card);
+        this.cards.push(replacement);
     }
 
-    public discard(card: UnknownCard, color: Color, value: number): void {
-        this.game.discard(this.game.getDeck().drawCard(card.getColor(), card.getNumber()));
-        this.remove(card);
+    public play(card: Card, color: Color, value: number): void {
+        if (card instanceof UnknownCard) {
+            this.game.play(this.game.getDeck().drawCard(color, value));
+        } else {
+            this.game.play(card);
+        }
+        this.replace(card, new UnknownCard(this.game.getDeck()));
+    }
+
+    public discard(card: Card, color: Color, value: number): void {
+        if (card instanceof UnknownCard) {
+            this.game.discard(this.game.getDeck().drawCard(color, value));
+        } else {
+            this.game.discard(card);
+        }
+        this.replace(card, new UnknownCard(this.game.getDeck()));
     }
 
     public update(): void {
         for (let card of this.cards) {
             card.update();
+
+            if (card.isColorConfirmed() && card.isNumberConfirmed()) {
+                // swap it with an actual card
+                let knownCard = this.game.getDeck().drawCard(card.getColor(), card.getNumber());
+                this.cards.splice(this.remove(card), 0, knownCard);
+            }
+        }
+
+        for (let card of this.cards) {
+            card.update();
         }
     }
 
-    public getCards(): UnknownCard[] {
+    public getCards(): Card[] {
         return this.cards;
     }
 }

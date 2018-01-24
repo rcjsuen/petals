@@ -6,41 +6,47 @@
 
 import { Color } from './game';
 
-export class Card {
+export interface Card {
 
-    private color: Color;
-    private value: number;
+    is(color: Color, value: number): boolean;
 
-    constructor(color: Color, value: number) {
-        this.color = color;
-        this.value = value;
-    }
+    getColor(): Color;
 
-    public toString(): string {
-        switch (this.color) {
-            case Color.BLUE:
-                return "Blue " + this.value;
-            case Color.GREEN:
-                return "Green " + this.value;
-            case Color.RED:
-                return "Red " + this.value;
-            case Color.WHITE:
-                return "White " + this.value;
-            case Color.YELLOW:
-                return "Yellow " + this.value;
-        }
-        return "Unknown";
-    }
+    getNumber(): number;
 
-    public is(color: Color, value: number) {
-        return this.color === color && this.value === value;
-    }
+    getColorLabel(): string;
 
-    public getColor(): Color {
-        return this.color;
-    }
+    getColors(): Color[];
 
-    public getNumber(): number {
-        return this.value;
-    }
+    getColorLabels(): string[];
+
+    getNumber(): number;
+
+    getNumbers(): number[];
+
+    isColorConfirmed(): boolean;
+
+    isNumberConfirmed(): boolean;
+
+    setBlue(red: boolean): void;
+
+    setGreen(green: boolean): void;
+
+    setRed(red: boolean): void;
+
+    setWhite(white: boolean): void;
+
+    setYellow(yellow: boolean): void;
+
+    setOne(one: boolean): void;
+
+    setTwo(two: boolean): void;
+
+    setThree(three: boolean): void;
+
+    setFour(four: boolean): void;
+
+    setFive(five: boolean): void;
+
+    update(): void;
 }

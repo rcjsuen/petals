@@ -5,70 +5,70 @@
 'use strict';
 
 import { Color } from "./game";
-import { Card } from "./card";
+import { KnownCard } from "./knownCard";
 
 export class Deck {
 
-    private cards: Card[] = [];
+    private cards: KnownCard[] = [];
 
     constructor() {
-        this.cards.push(new Card(Color.BLUE, 1));
-        this.cards.push(new Card(Color.BLUE, 1));
-        this.cards.push(new Card(Color.BLUE, 1));
-        this.cards.push(new Card(Color.BLUE, 2));
-        this.cards.push(new Card(Color.BLUE, 2));
-        this.cards.push(new Card(Color.BLUE, 3));
-        this.cards.push(new Card(Color.BLUE, 3));
-        this.cards.push(new Card(Color.BLUE, 4));
-        this.cards.push(new Card(Color.BLUE, 4));
-        this.cards.push(new Card(Color.BLUE, 5));
+        this.cards.push(new KnownCard(Color.BLUE, 1));
+        this.cards.push(new KnownCard(Color.BLUE, 1));
+        this.cards.push(new KnownCard(Color.BLUE, 1));
+        this.cards.push(new KnownCard(Color.BLUE, 2));
+        this.cards.push(new KnownCard(Color.BLUE, 2));
+        this.cards.push(new KnownCard(Color.BLUE, 3));
+        this.cards.push(new KnownCard(Color.BLUE, 3));
+        this.cards.push(new KnownCard(Color.BLUE, 4));
+        this.cards.push(new KnownCard(Color.BLUE, 4));
+        this.cards.push(new KnownCard(Color.BLUE, 5));
 
-        this.cards.push(new Card(Color.GREEN, 1));
-        this.cards.push(new Card(Color.GREEN, 1));
-        this.cards.push(new Card(Color.GREEN, 1));
-        this.cards.push(new Card(Color.GREEN, 2));
-        this.cards.push(new Card(Color.GREEN, 2));
-        this.cards.push(new Card(Color.GREEN, 3));
-        this.cards.push(new Card(Color.GREEN, 3));
-        this.cards.push(new Card(Color.GREEN, 4));
-        this.cards.push(new Card(Color.GREEN, 4));
-        this.cards.push(new Card(Color.GREEN, 5));
+        this.cards.push(new KnownCard(Color.GREEN, 1));
+        this.cards.push(new KnownCard(Color.GREEN, 1));
+        this.cards.push(new KnownCard(Color.GREEN, 1));
+        this.cards.push(new KnownCard(Color.GREEN, 2));
+        this.cards.push(new KnownCard(Color.GREEN, 2));
+        this.cards.push(new KnownCard(Color.GREEN, 3));
+        this.cards.push(new KnownCard(Color.GREEN, 3));
+        this.cards.push(new KnownCard(Color.GREEN, 4));
+        this.cards.push(new KnownCard(Color.GREEN, 4));
+        this.cards.push(new KnownCard(Color.GREEN, 5));
 
-        this.cards.push(new Card(Color.RED, 1));
-        this.cards.push(new Card(Color.RED, 1));
-        this.cards.push(new Card(Color.RED, 1));
-        this.cards.push(new Card(Color.RED, 2));
-        this.cards.push(new Card(Color.RED, 2));
-        this.cards.push(new Card(Color.RED, 3));
-        this.cards.push(new Card(Color.RED, 3));
-        this.cards.push(new Card(Color.RED, 4));
-        this.cards.push(new Card(Color.RED, 4));
-        this.cards.push(new Card(Color.RED, 5));
+        this.cards.push(new KnownCard(Color.RED, 1));
+        this.cards.push(new KnownCard(Color.RED, 1));
+        this.cards.push(new KnownCard(Color.RED, 1));
+        this.cards.push(new KnownCard(Color.RED, 2));
+        this.cards.push(new KnownCard(Color.RED, 2));
+        this.cards.push(new KnownCard(Color.RED, 3));
+        this.cards.push(new KnownCard(Color.RED, 3));
+        this.cards.push(new KnownCard(Color.RED, 4));
+        this.cards.push(new KnownCard(Color.RED, 4));
+        this.cards.push(new KnownCard(Color.RED, 5));
 
-        this.cards.push(new Card(Color.WHITE, 1));
-        this.cards.push(new Card(Color.WHITE, 1));
-        this.cards.push(new Card(Color.WHITE, 1));
-        this.cards.push(new Card(Color.WHITE, 2));
-        this.cards.push(new Card(Color.WHITE, 2));
-        this.cards.push(new Card(Color.WHITE, 3));
-        this.cards.push(new Card(Color.WHITE, 3));
-        this.cards.push(new Card(Color.WHITE, 4));
-        this.cards.push(new Card(Color.WHITE, 4));
-        this.cards.push(new Card(Color.WHITE, 5));
+        this.cards.push(new KnownCard(Color.WHITE, 1));
+        this.cards.push(new KnownCard(Color.WHITE, 1));
+        this.cards.push(new KnownCard(Color.WHITE, 1));
+        this.cards.push(new KnownCard(Color.WHITE, 2));
+        this.cards.push(new KnownCard(Color.WHITE, 2));
+        this.cards.push(new KnownCard(Color.WHITE, 3));
+        this.cards.push(new KnownCard(Color.WHITE, 3));
+        this.cards.push(new KnownCard(Color.WHITE, 4));
+        this.cards.push(new KnownCard(Color.WHITE, 4));
+        this.cards.push(new KnownCard(Color.WHITE, 5));
 
-        this.cards.push(new Card(Color.YELLOW, 1));
-        this.cards.push(new Card(Color.YELLOW, 1));
-        this.cards.push(new Card(Color.YELLOW, 1));
-        this.cards.push(new Card(Color.YELLOW, 2));
-        this.cards.push(new Card(Color.YELLOW, 2));
-        this.cards.push(new Card(Color.YELLOW, 3));
-        this.cards.push(new Card(Color.YELLOW, 3));
-        this.cards.push(new Card(Color.YELLOW, 4));
-        this.cards.push(new Card(Color.YELLOW, 4));
-        this.cards.push(new Card(Color.YELLOW, 5));
+        this.cards.push(new KnownCard(Color.YELLOW, 1));
+        this.cards.push(new KnownCard(Color.YELLOW, 1));
+        this.cards.push(new KnownCard(Color.YELLOW, 1));
+        this.cards.push(new KnownCard(Color.YELLOW, 2));
+        this.cards.push(new KnownCard(Color.YELLOW, 2));
+        this.cards.push(new KnownCard(Color.YELLOW, 3));
+        this.cards.push(new KnownCard(Color.YELLOW, 3));
+        this.cards.push(new KnownCard(Color.YELLOW, 4));
+        this.cards.push(new KnownCard(Color.YELLOW, 4));
+        this.cards.push(new KnownCard(Color.YELLOW, 5));
     }
 
-    public drawString(card: string): Card {
+    public drawString(card: string): KnownCard {
         switch (card.charAt(0)) {
             case 'B':
                 return this.drawCard(Color.BLUE, parseInt(card.charAt(1)));
@@ -84,7 +84,7 @@ export class Deck {
         return null;
     }
 
-    public drawCard(color: Color, value: number): Card {
+    public drawCard(color: Color, value: number): KnownCard {
         for (let i = 0; i < this.cards.length; i++) {
             if (this.cards[i].is(color, value)) {
                 let card = this.cards[i];
@@ -107,6 +107,15 @@ export class Deck {
     public hasNumber(value: number): boolean {
         for (let card of this.cards) {
             if (card.getNumber() === value) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public hasCard(color: Color, value: number): boolean {
+        for (let card of this.cards) {
+            if (card.is(color, value)) {
                 return true;
             }
         }

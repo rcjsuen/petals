@@ -6,8 +6,9 @@
 
 import { Deck } from "./deck";
 import { Color } from "./game";
+import { Card } from "./card";
 
-export class UnknownCard {
+export class UnknownCard implements Card {
 
     private blue: boolean = true;
     private green: boolean = true;
@@ -275,37 +276,85 @@ export class UnknownCard {
     }
 
     public update(): void {
-        if (this.blue) {
-            this.blue = this.deck.hasColor(Color.BLUE);
-        }
-        if (this.green) {
-            this.green = this.deck.hasColor(Color.GREEN);
-        }
-        if (this.red) {
-            this.red = this.deck.hasColor(Color.RED);
-        }
-        if (this.white) {
-            this.white = this.deck.hasColor(Color.WHITE);
-        }
-        if (this.yellow) {
-            this.yellow = this.deck.hasColor(Color.YELLOW);
-        }
-        if (this.one) {
-            this.one = this.deck.hasNumber(1);
-        }
-        if (this.two) {
-            this.two = this.deck.hasNumber(2);
-        }
-        if (this.three) {
-            this.three = this.deck.hasNumber(3);
-        }
-        if (this.four) {
-            this.four = this.deck.hasNumber(4);
-        }
-        if (this.five) {
-            this.five = this.deck.hasNumber(5);
+        if (this.isColorConfirmed()) {
+            let color = this.getColor();
+            if (this.one) {
+                this.one = this.deck.hasCard(color, 1);
+            }
+            if (this.two) {
+                this.two = this.deck.hasCard(color, 2);
+            }
+            if (this.three) {
+                this.three = this.deck.hasCard(color, 3);
+            }
+            if (this.four) {
+                this.four = this.deck.hasCard(color, 4);
+            }
+            if (this.five) {
+                this.five = this.deck.hasCard(color, 5);
+            }
+        } else if (this.isNumberConfirmed()) {
+            let value = this.getNumber();
+            if (this.blue) {
+                this.blue = this.deck.hasCard(Color.BLUE, value);
+            }
+            if (this.green) {
+                this.green = this.deck.hasCard(Color.GREEN, value);
+            }
+            if (this.red) {
+                this.red = this.deck.hasCard(Color.RED, value);
+            }
+            if (this.white) {
+                this.white = this.deck.hasCard(Color.WHITE, value);
+            }
+            if (this.yellow) {
+                this.yellow = this.deck.hasCard(Color.YELLOW, value);
+            }
+        } else {
+            if (this.blue) {
+                this.blue = this.deck.hasColor(Color.BLUE);
+            }
+            if (this.green) {
+                this.green = this.deck.hasColor(Color.GREEN);
+            }
+            if (this.red) {
+                this.red = this.deck.hasColor(Color.RED);
+            }
+            if (this.white) {
+                this.white = this.deck.hasColor(Color.WHITE);
+            }
+            if (this.yellow) {
+                this.yellow = this.deck.hasColor(Color.YELLOW);
+            }
+            let check = [false, false, false, false, false];
+            for (let c of this.getColors()) {
+                if (this.one) {
+                    check[0] = check[0] || this.deck.hasCard(c, 1);
+                }
+                if (this.two) {
+                    check[1] = check[1] || this.deck.hasCard(c, 2);
+                }
+                if (this.three) {
+                    check[2] = check[2] || this.deck.hasCard(c, 3);
+                }
+                if (this.four) {
+                    check[3] = check[3] || this.deck.hasCard(c, 4);
+                }
+                if (this.five) {
+                    check[4] = check[4] || this.deck.hasCard(c, 5);
+                }
+            }
+            this.one = check[0];
+            this.two = check[1];
+            this.three = check[2];
+            this.four = check[3];
+            this.five = check[4];
         }
         this.label = this.toString();
+    }
+
+    public is(color: Color, value: number): boolean {
+        return this.getColor() === color && this.getNumber() === value;
     }
 
     public toString(): string {
