@@ -2,6 +2,7 @@
 
 **Petals** is a card tracker for the _Hanabi_ card game.
 It is built with Ionic.
+Petals can be accessed online [here](https://rcjsuen.github.io/petals/).
 
 ## Development Instructions
 
