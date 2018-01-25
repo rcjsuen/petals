@@ -53,6 +53,15 @@ export class HintPage {
         }
     }
 
+    public canHint(): boolean {
+        for (let card of this.cards) {
+            if (card.checked) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public hint(): void {
         let hand = this.game.getHand().getCards();
         for (let i = 0; i < this.cards.length; i++) {

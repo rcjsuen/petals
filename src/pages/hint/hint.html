@@ -12,6 +12,6 @@
       <ion-label>{{card.label}}</ion-label>
       <ion-checkbox [(ngModel)]="card.checked"></ion-checkbox>
     </ion-item>
-    <button ion-button block (click)="hint()">Hint</button>
+    <button ion-button block (click)="hint()" [disabled]="!canHint()">Hint</button>
   </ion-list>
 </ion-content>
