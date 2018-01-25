@@ -96,31 +96,32 @@ export class HintPage {
     }
 
     public hint(): void {
-        let hand = this.game.getHand().getCards();
+        let hand = this.game.getHand();
+        let cards = hand.getCards();
         for (let i = 0; i < this.cards.length; i++) {
             if (this.blue) {
-                hand[i].setBlue(this.cards[i].checked);
+                cards[i].setBlue(this.cards[i].checked);
             } else if (this.green) {
-                hand[i].setGreen(this.cards[i].checked);
+                cards[i].setGreen(this.cards[i].checked);
             } else if (this.red) {
-                hand[i].setRed(this.cards[i].checked);
+                cards[i].setRed(this.cards[i].checked);
             } else if (this.white) {
-                hand[i].setWhite(this.cards[i].checked);
+                cards[i].setWhite(this.cards[i].checked);
             } else if (this.yellow) {
-                hand[i].setYellow(this.cards[i].checked);
+                cards[i].setYellow(this.cards[i].checked);
             } else if (this.one) {
-                hand[i].setOne(this.cards[i].checked);
+                cards[i].setOne(this.cards[i].checked);
             } else if (this.two) {
-                hand[i].setTwo(this.cards[i].checked);
+                cards[i].setTwo(this.cards[i].checked);
             } else if (this.three) {
-                hand[i].setThree(this.cards[i].checked);
+                cards[i].setThree(this.cards[i].checked);
             } else if (this.four) {
-                hand[i].setFour(this.cards[i].checked);
+                cards[i].setFour(this.cards[i].checked);
             } else if (this.five) {
-                hand[i].setFive(this.cards[i].checked);
+                cards[i].setFive(this.cards[i].checked);
             }
-            hand[i].update();
         }
+        hand.update();
         this.navCtrl.pop();
     }
 
