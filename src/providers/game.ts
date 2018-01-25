@@ -21,7 +21,7 @@ export class Game {
 
     private playerCount: number;
     private players: Player[] = [];
-    
+
     private deck: Deck;
     private hand: Hand;
     private played: Card[] = [];
@@ -35,6 +35,23 @@ export class Game {
     private contains(cards: Card[], color: Color, value: number) {
         for (let card of cards) {
             if (card.is(color, value)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public canPlay(color: Color, value: number): boolean {
+        if (value === 1) {
+            for (let card of this.played) {
+                if (card.getColor() === color) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        for (let card of this.played) {
+            if (card.getColor() === color && card.getNumber() === value - 1) {
                 return true;
             }
         }

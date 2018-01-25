@@ -5,7 +5,7 @@
 'use strict';
 
 import { Component } from '@angular/core';
-import { NavController, ActionSheetController } from 'ionic-angular';
+import { NavController, ActionSheetController, AlertController } from 'ionic-angular';
 
 import { Game, Color } from '../../providers/game';
 import { Player } from '../../providers/player';
@@ -21,7 +21,7 @@ export class HandsPage {
 
     private players;
 
-    constructor(public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, public game: Game) {
+    constructor(public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, private alertCtrl: AlertController, public game: Game) {
         this.players = game.getPlayers();
     }
 
@@ -40,6 +40,15 @@ export class HandsPage {
     public performHandAction(play: boolean, card: UnknownCard) {
         if (card.isColorConfirmed()) {
             if (card.isNumberConfirmed()) {
+                if (play && !this.game.canPlay(card.getColor(), card.getNumber())) {
+                    let alert = this.alertCtrl.create({
+                        title: 'Invalid Play',
+                        subTitle: 'Cannot play ' + card.toString(),
+                        buttons: ['Dismiss']
+                    })
+                    alert.present();
+                    return;
+                }
                 this.game.getHand().play(card, card.getColor(), card.getNumber());
             } else {
                 let color = card.getColor();
@@ -51,6 +60,15 @@ export class HandsPage {
                         text: label + numbers[i],
                         handler: () => {
                             if (play) {
+                                if (play && !this.game.canPlay(color, i + 1)) {
+                                    let alert = this.alertCtrl.create({
+                                        title: 'Invalid Play',
+                                        subTitle: 'Cannot play ' + label + numbers[i],
+                                        buttons: ['Dismiss']
+                                    })
+                                    alert.present();
+                                    return;
+                                }
                                 this.game.getHand().play(card, color, i + 1);
                             } else {
                                 this.game.getHand().discard(card, color, i + 1);
@@ -78,6 +96,15 @@ export class HandsPage {
                     text: labels[i] + ' ' + value,
                     handler: () => {
                         if (play) {
+                            if (play && !this.game.canPlay(colors[i], value)) {
+                                let alert = this.alertCtrl.create({
+                                    title: 'Invalid Play',
+                                    subTitle: 'Cannot play ' + labels[i] + ' ' + value,
+                                    buttons: ['Dismiss']
+                                })
+                                alert.present();
+                                return;
+                            }
                             this.game.getHand().play(card, colors[i], value);
                         } else {
                             this.game.getHand().discard(card, colors[i], value);
@@ -109,6 +136,15 @@ export class HandsPage {
                                 text: labels[i] + ' ' + numbers[j],
                                 handler: () => {
                                     if (play) {
+                                        if (play && !this.game.canPlay(colors[i], j + 1)) {
+                                            let alert = this.alertCtrl.create({
+                                                title: 'Invalid Play',
+                                                subTitle: 'Cannot play ' + labels[i] + ' ' + (j + 1),
+                                                buttons: ['Dismiss']
+                                            })
+                                            alert.present();
+                                            return;
+                                        }
                                         this.game.getHand().play(card, colors[i], j + 1);
                                     } else {
                                         this.game.getHand().discard(card, colors[i], j + 1);
@@ -217,6 +253,15 @@ export class HandsPage {
     }
 
     public presentDrawColorActionSheet(play: boolean, player: Player, card: Card) {
+        if (play && !this.game.canPlay(card.getColor(), card.getNumber())) {
+            let alert = this.alertCtrl.create({
+                title: 'Invalid Play',
+                subTitle: 'Cannot play ' + card.toString(),
+                buttons: ['Dismiss']
+            })
+            alert.present();
+            return;
+        }
         let buttons = [];
         if (this.game.getDeck().hasColor(Color.BLUE)) {
             buttons.push({
