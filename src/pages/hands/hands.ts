@@ -217,77 +217,99 @@ export class HandsPage {
     }
 
     public presentDrawColorActionSheet(play: boolean, player: Player, card: Card) {
+        let buttons = [];
+        if (this.game.getDeck().hasColor(Color.BLUE)) {
+            buttons.push({
+                text: 'Blue',
+                handler: () => {
+                    this.presentDrawNumberActionSheet(play, player, card, Color.BLUE);
+                }
+            });
+        }
+        if (this.game.getDeck().hasColor(Color.GREEN)) {
+            buttons.push({
+                text: 'Green',
+                handler: () => {
+                    this.presentDrawNumberActionSheet(play, player, card, Color.GREEN);
+                }
+            });
+        }
+        if (this.game.getDeck().hasColor(Color.RED)) {
+            buttons.push({
+                text: 'Red',
+                handler: () => {
+                    this.presentDrawNumberActionSheet(play, player, card, Color.RED);
+                }
+            });
+        }
+        if (this.game.getDeck().hasColor(Color.WHITE)) {
+            buttons.push({
+                text: 'White',
+                handler: () => {
+                    this.presentDrawNumberActionSheet(play, player, card, Color.WHITE);
+                }
+            });
+        }
+        if (this.game.getDeck().hasColor(Color.YELLOW)) {
+            buttons.push({
+                text: 'Yellow',
+                handler: () => {
+                    this.presentDrawNumberActionSheet(play, player, card, Color.YELLOW);
+                }
+            });
+        }
         let actionSheet = this.actionSheetCtrl.create({
             title: 'Draw',
-            buttons: [
-                {
-                    text: 'Blue',
-                    handler: () => {
-                        this.presentDrawNumberActionSheet(play, player, card, Color.BLUE);
-                    }
-                }, {
-                    text: 'Green',
-                    handler: () => {
-                        this.presentDrawNumberActionSheet(play, player, card, Color.GREEN);
-                    }
-                }, {
-                    text: 'Red',
-                    handler: () => {
-                        this.presentDrawNumberActionSheet(play, player, card, Color.RED);
-                    }
-                }, {
-                    text: 'White',
-                    handler: () => {
-                        this.presentDrawNumberActionSheet(play, player, card, Color.WHITE);
-                    }
-                }, {
-                    text: 'Yellow',
-                    handler: () => {
-                        this.presentDrawNumberActionSheet(play, player, card, Color.YELLOW);
-                    }
-                }, {
-                    text: 'Cancel',
-                    role: 'cancel'
-                }
-            ]
+            buttons: buttons
         });
         actionSheet.present();
     }
 
     private presentDrawNumberActionSheet(play: boolean, player: Player, card: Card, color: Color) {
+        let buttons = [];
+        if (this.game.getDeck().hasCard(color, 1)) {
+            buttons.push({
+                text: '1',
+                handler: () => {
+                    this.performAction(player, card, play, color, 1);
+                }
+            });
+        }
+        if (this.game.getDeck().hasCard(color, 2)) {
+            buttons.push({
+                text: '2',
+                handler: () => {
+                    this.performAction(player, card, play, color, 2);
+                }
+            });
+        }
+        if (this.game.getDeck().hasCard(color, 3)) {
+            buttons.push({
+                text: '3',
+                handler: () => {
+                    this.performAction(player, card, play, color, 3);
+                }
+            });
+        }
+        if (this.game.getDeck().hasCard(color, 4)) {
+            buttons.push({
+                text: '4',
+                handler: () => {
+                    this.performAction(player, card, play, color, 4);
+                }
+            });
+        }
+        if (this.game.getDeck().hasCard(color, 5)) {
+            buttons.push({
+                text: '5',
+                handler: () => {
+                    this.performAction(player, card, play, color, 5);
+                }
+            });
+        }
         let actionSheet = this.actionSheetCtrl.create({
             title: 'Draw',
-            buttons: [
-                {
-                    text: '1',
-                    handler: () => {
-                        this.performAction(player, card, play, color, 1);
-                    }
-                }, {
-                    text: '2',
-                    handler: () => {
-                        this.performAction(player, card, play, color, 2);
-                    }
-                }, {
-                    text: '3',
-                    handler: () => {
-                        this.performAction(player, card, play, color, 3);
-                    }
-                }, {
-                    text: '4',
-                    handler: () => {
-                        this.performAction(player, card, play, color, 4);
-                    }
-                }, {
-                    text: '5',
-                    handler: () => {
-                        this.performAction(player, card, play, color, 5);
-                    }
-                }, {
-                    text: 'Cancel',
-                    role: 'cancel'
-                }
-            ]
+            buttons: buttons
         });
         actionSheet.present();
     }
