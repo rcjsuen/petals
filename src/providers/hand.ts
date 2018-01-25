@@ -62,7 +62,7 @@ export class Hand {
         for (let card of this.cards) {
             card.update();
 
-            if (card.isColorConfirmed() && card.isNumberConfirmed()) {
+            if (card instanceof UnknownCard && card.isColorConfirmed() && card.isNumberConfirmed()) {
                 // swap it with an actual card
                 let knownCard = this.game.getDeck().drawCard(card.getColor(), card.getNumber());
                 this.cards.splice(this.remove(card), 0, knownCard);
