@@ -10,7 +10,7 @@
   <ion-list>
     <ion-item *ngFor="let card of cards">
       <ion-label>{{card.label}}</ion-label>
-      <ion-checkbox [(ngModel)]="card.checked"></ion-checkbox>
+      <ion-checkbox [(ngModel)]="card.checked" [disabled]="card.disabled"></ion-checkbox>
     </ion-item>
     <button ion-button block (click)="hint()" [disabled]="!canHint()">Hint</button>
   </ion-list>

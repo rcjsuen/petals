@@ -7,8 +7,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { Game } from '../../providers/game';
+import { Game, Color } from '../../providers/game';
 import { NavParams } from 'ionic-angular/navigation/nav-params';
+import { Card } from '../../providers/card';
 
 @Component({
     selector: 'page-hint',
@@ -45,12 +46,44 @@ export class HintPage {
         this.five = hint === '5';
 
         for (let card of this.game.getHand().getCards()) {
+            let precheck = this.shouldPrecheck(card);
             let model = {
                 label: card.toString(),
-                checked: false
+                checked: precheck,
+                disabled: precheck || this.shouldDisable(card)
             }
             this.cards.push(model);
         }
+    }
+
+    private shouldPrecheck(card: Card): boolean {
+        let color = card.getColor();
+        let value = card.getNumber();
+        return (this.blue && color === Color.BLUE) ||
+            (this.green && color === Color.GREEN) ||
+            (this.red && color === Color.RED) ||
+            (this.white && color === Color.WHITE) ||
+            (this.yellow && color === Color.YELLOW) ||
+            (this.one && value === 1) ||
+            (this.two && value === 2) ||
+            (this.three && value === 3) ||
+            (this.four && value === 4) ||
+            (this.five && value === 5);
+    }
+
+    private shouldDisable(card: Card): boolean {
+        let colors = card.getColors();
+        let numbers = card.getNumbers();
+        return (this.blue && colors.indexOf(Color.BLUE) === -1) ||
+            (this.green && colors.indexOf(Color.GREEN) === -1) ||
+            (this.red && colors.indexOf(Color.RED) === -1) ||
+            (this.white && colors.indexOf(Color.WHITE) === -1) ||
+            (this.yellow && colors.indexOf(Color.YELLOW) === -1) ||
+            (this.one && numbers.indexOf(1) === -1) ||
+            (this.two && numbers.indexOf(2) === -1) ||
+            (this.three && numbers.indexOf(3) === -1) ||
+            (this.four && numbers.indexOf(4) === -1) ||
+            (this.five && numbers.indexOf(5) === -1);
     }
 
     public canHint(): boolean {
