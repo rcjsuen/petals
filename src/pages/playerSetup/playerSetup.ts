@@ -36,6 +36,21 @@ export class PlayerSetupPage {
         }
     }
 
+    public checkForm(): boolean {
+        for (let player of this.players) {
+            if (player.card1 === "" ||
+                    player.card2 === "" ||
+                    player.card3 === "" ||
+                    player.card4 === "") {
+                return false;
+            }
+            if (this.game.getPlayerCount() < 4 && player.card5 === "") {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public finish(): void {
         let deck = this.game.getDeck();
         for (let i = 0; i < this.players.length; i++) {

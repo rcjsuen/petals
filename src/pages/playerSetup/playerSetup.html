@@ -169,5 +169,5 @@
       </ion-select>
     </ion-item>
   </ion-list>
-  <button ion-button block (click)="finish()">Finish</button>
+  <button ion-button block (click)="finish()" [disabled]="!checkForm()">Finish</button>
 </ion-content>
